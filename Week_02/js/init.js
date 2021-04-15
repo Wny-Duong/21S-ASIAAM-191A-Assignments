@@ -17,23 +17,33 @@ fetch("js/map1.geojson")
     })
     .then(data =>{
         // Basic Leaflet method to add GeoJSON data
-		L.geoJSON(data, {
-			style: function (feature) {
-				return {color: feature.properties.color};
-			}
-		}).bindPopup(function (layer) {
-			return layer.feature.properties.place + "<br>" + layer.feature.properties.status;
+		L.geoJSON(data, myLayerOptions )
+			.bindPopup(function (layer) {
+			return layer.feature.properties.place + "<br>" + layer.feature.properties.status + "<br>";
 		}).addTo(coolMap);
+
+
     });
 
 function customMarker (feature, latlng) {
     return L.circleMarker(latlng, { color: feature.properties.color })
   }
+
   
-  // create an options object
+
+
+
   let myLayerOptions = {
     pointToLayer: customMarker
   }
+/*
+{
+			style: function (feature) {
+				return {color: feature.properties.color};
+			}
+		}
+		*/
+
 // the leaflet method for adding a geojson
 
 //Create new markers for the following locations
