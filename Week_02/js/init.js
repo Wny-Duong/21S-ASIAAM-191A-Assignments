@@ -29,7 +29,20 @@ function customMarker (feature, latlng) {
     return L.circleMarker(latlng, { color: feature.properties.color })
   }
 
-  
+  /*
+function trailLinesSingle (feature, latlng) {
+	var latlngs = Array();
+	if(layer.feature.properties.place.contains("Crystal Cove Trail Start"))
+	{
+		latlngs.push(marker1.getLatLng());
+	}
+	if(layer.feature.properties.place.contains("Crystal Cove Trail End"))
+	{
+		latlngs.push(marker2.getLatLng());
+	}
+	var polyline = L.polyline(latlngs, {color: 'red'}).addTo(coolMap);
+}
+  */
 
 
 
