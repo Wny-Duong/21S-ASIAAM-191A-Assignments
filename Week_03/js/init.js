@@ -47,11 +47,11 @@ function getLongs(lat_long){
 };
 
 // declare variables
-let zoomLevel = 15;
+let zoomLevel = 12;
 var latList = getLats(lat_long_pairs);
 var longList = getLongs(lat_long_pairs);
 
-const mapCenter = [math.median(latList), math.median(longList)];
+const mapCenter = [math.mean(latList), math.mean(longList)];
 //const mapCenter = [34, -118];
 
 // use the variables
