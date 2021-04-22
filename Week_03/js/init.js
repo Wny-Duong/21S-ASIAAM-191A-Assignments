@@ -84,6 +84,28 @@ function createButtons(lat,lng,title){
     document.body.appendChild(newButton); //this adds the button to our page.
 }
 
+zoomlevels = [6, 12, 24];
+zoomlabels = ["Half", "Default", "Double"];
+
+for (i = 0; i < zoomlabels.length; i++)
+{
+	zoomButtons(zoomlevels[i], zoomlabels[i]);
+}
+
+function zoomButtons(zoomlv, zoomlbl){
+    const newButton = document.createElement("button"); // adds a new button
+    newButton.id = "button"+zoomlbl; // gives the button a unique id
+    newButton.innerHTML = zoomlbl; // gives the button a title
+    newButton.setAttribute("zoomlevel",zoomlv); // sets the latitude 
+
+    // attach an event listner to the button with Leaflet's map.flyTo
+    newButton.addEventListener('click', function(){
+        map.setZoom(zoomlv);
+    })
+    document.body.appendChild(newButton); //this adds the button to our page.
+}
+
+
 //https://financialwellness.ucla.edu/resources/food-security-resources
 //https://eatwell.healthy.ucla.edu/resources/
 //http://www.wlac.edu/Basic-Needs/Food-Pantry.aspx
@@ -94,24 +116,6 @@ function createButtons(lat,lng,title){
 
 //https://foodfinder.211la.org/-118.524792,33.992406,-118.281375,34.107242?layers=20%2C22%2C18%2C19%2C21
 //Ahh, this is an interesting one and actually way too close to what I had in mind for our group project.
-
-
-// Create a function to filter markers and move to specific locations
-// Uses median of relevant points
-function createButtons(lat,lng,title){
-    const newButton = document.createElement("button"); // adds a new button
-    newButton.id = "button"+title; // gives the button a unique id
-    newButton.innerHTML = title; // gives the button a title
-    newButton.setAttribute("lat",lat); // sets the latitude 
-    newButton.setAttribute("lng",lng); // sets the longitude 
-
-    // attach an event listner to the button with Leaflet's map.flyTo
-    newButton.addEventListener('click', function(){
-        map.flyTo([lat,lng]); 
-    })
-    document.body.appendChild(newButton); //this adds the button to our page.
-}
-
 
 
 
