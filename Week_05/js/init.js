@@ -19,8 +19,8 @@ function addMarker(data){
         // console.log(data)
         // these are the names of our fields in the google sheets:
         L.marker([data.lat,data.longi]).addTo(map)
-            .bindPopup(`<h2>${data.game}</h2>`  + 
-                        `<br>${data.age}</br>` + `<br>${data.location}</br>`)
+            .bindPopup(`<h2>${data.whatisyourfavoritegame}</h2>`  + 
+                        `<br>${data.whatisyourage}</br>` + `<br>${data.location}</br>`)
 
         return data.timestamp
 }
@@ -30,7 +30,7 @@ function addMarkerAlt(data){
     // console.log(data)
     // these are the names of our fields in the google sheets:
     L.marker([data.lat,data.longi]).addTo(map)
-        .bindPopup(`<h2>${data.hobbies}</h2>`  + 
+        .bindPopup(`<h2>${data.whatelsedoyoudoinyoursparetime}</h2>`  + 
                     `<br>${data.location}</br>`)
 
     return data.timestamp
@@ -80,7 +80,7 @@ function processData(theData){
     //Branching popup
     for (i = 0; i < formattedData.length; i++)
     {
-        if (formattedData[i].game == "")
+        if (formattedData[i].whatisyourfavoritegame == "")
         {
             addMarkerAlt(formattedData[i]);
         }
