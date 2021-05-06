@@ -19,10 +19,22 @@ function addMarker(data){
         // console.log(data)
         // these are the names of our fields in the google sheets:
         L.marker([data.lat,data.longi]).addTo(map)
-            .bindPopup(`<h2>${data.favoritegame}</h2>`)
+            .bindPopup(`<h2>${data.game}</h2>`  + 
+                        `<br>${data.age}</br>` + `<br>${data.location}</br>`)
+
         return data.timestamp
 }
 
+
+function addMarkerAlt(data){
+    // console.log(data)
+    // these are the names of our fields in the google sheets:
+    L.marker([data.lat,data.longi]).addTo(map)
+        .bindPopup(`<h2>${data.hobbies}</h2>`  + 
+                    `<br>${data.location}</br>`)
+
+    return data.timestamp
+}
 
 const longString = 'hellooooooooooooo'
 const array1 = ['a', 'b', 'c'];
@@ -62,5 +74,19 @@ function processData(theData){
     // lets see what the data looks like when its clean!
     console.log(formattedData)
     // we can actually add functions here too
-    formattedData.forEach(addMarker)
+    
+    // formattedData.forEach(addMarker)
+    //formattedData.forEach(addMarkerAlt)
+    //Branching popup
+    for (i = 0; i < formattedData.length; i++)
+    {
+        if (formattedData[i].game == "")
+        {
+            addMarkerAlt(formattedData[i]);
+        }
+        else{
+            addMarker(formattedData[i]);
+        }
+        
+    }
 }
